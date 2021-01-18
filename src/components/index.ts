@@ -1,2 +1,5 @@
 export * from './footer'
 export * from './header'
+export * from './slide'
+export * from './banner'
+export * from './prod'
