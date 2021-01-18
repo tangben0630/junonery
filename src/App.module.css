@@ -4,6 +4,21 @@
 .app-header {
   background-color: white;
 }
+.top-header{
+  height: 40px;
+  line-height: 40px;
+  padding-left: 4%;
+  display: block;
+  background-color: #f5f5f5;
+}
+.wrap{
+  width: 88%;
+  margin-left: 4%;
+}
+.b-group{
+  float: right;
+  margin-top: 5px;
+}
 .main-header{
   background-color: white;
   height: 60px;
@@ -25,4 +40,9 @@
   margin-top: 14px;
   margin-left: 37px;
   line-height: 64px;
+}
+.main-mean{
+  padding-left: 6% !important;
+  background-color: #1976d2 !important;
+  color: #f5f5f5 !important;
 }
