@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './prod.module.css'
-import { Typography, Divider, Row, Col } from 'antd'
+import { Divider, Row, Col } from 'antd'
 import { ProdItem } from './Item'
 interface Props {
   title: JSX.Element,

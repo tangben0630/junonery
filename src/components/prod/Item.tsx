@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './prod.module.css'
+// import styles from './prod.module.css'
 import { Typography, Image } from 'antd'
 interface Props {
   title: string,
