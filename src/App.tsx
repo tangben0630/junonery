@@ -8,7 +8,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact component={Home} path={'/'}></Route>
-          <Route component={Login} path={'/login'}></Route>
+          <Route component={Login} path={'/login/:id'}></Route>
           <Route component={Reg} path={'/reg'}></Route>
           <Route render={() => <h2>404</h2>}></Route>
         </Switch>
