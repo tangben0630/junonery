@@ -5,6 +5,6 @@ interface Props {
 }
 export const Detail: React.FC<RouteComponentProps<Props>> = (props) => {
   return <div>
-    detail页面
+    detail页面 + {props.match.params.id}
   </div>
 }

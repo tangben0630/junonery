@@ -1,14 +1,23 @@
 import React from 'react'
 import styles from './header.module.css'
-import { Layout, Typography, Input, Dropdown, Menu, Button } from 'antd'
 import logo from '../../logo.svg'
-export const Header: React.FC = () => {
+import { Layout, Typography, Input, Dropdown, Menu, Button } from 'antd'
+import { useHistory, useLocation } from 'react-router-dom'
+export const Header: React.FC = (props) => {
+  const history = useHistory()
+  const location = useLocation()
+  console.log(location, '----', history);
+  const toLogin = () => {
+    history.push({ pathname: '/login', state: { a: 2 } })
+  }
+  const toReg = () => {
+    history.push({ pathname: '/reg' })
+  }
   return <>
     <div className={styles['app-header']}>
       {/* top-header */}
       <div className={styles['top-header']}>
         <div className={styles['inner']}>
-
           <Typography.Text>让旅游更简单</Typography.Text>
           <Dropdown.Button style={{ marginLeft: 15 }} overlay={
             <Menu>
@@ -19,8 +28,8 @@ export const Header: React.FC = () => {
             语言
           </Dropdown.Button>
           <Button.Group className={styles['btn-group']}>
-            <Button>登录</Button>
-            <Button>注册</Button>
+            <Button onClick={() => { toLogin() }}>登录</Button>
+            <Button onClick={() => { toReg() }}>注册</Button>
           </Button.Group>
         </div>
       </div>

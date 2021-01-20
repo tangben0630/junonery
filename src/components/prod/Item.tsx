@@ -1,15 +1,20 @@
 import React from 'react'
 // import styles from './prod.module.css'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { Typography, Image } from 'antd'
-interface Props {
+interface Props extends RouteComponentProps {
   title: string,
   img: string,
   price: string | number,
   size: string,
   id: number | number
 }
-export const ProdItem: React.FC<Props> = ({ title, id, size, img, price }) => {
-  return <div>
+const ProdItemCom: React.FC<Props> = ({ title, id, size, img, price, history }) => {
+  // const history = useHistory()
+  const toDetail = () => {
+    history.push({ pathname: '/detail/' + id })
+  }
+  return <div onClick={() => { toDetail() }}>
     {
       size === 'large' ?
         <Image src={img} height={285} width={490} /> :
@@ -26,3 +31,5 @@ export const ProdItem: React.FC<Props> = ({ title, id, size, img, price }) => {
   </div>
 
 }
+
+export const ProdItem = withRouter(ProdItemCom)
