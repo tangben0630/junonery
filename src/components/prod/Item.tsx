@@ -19,7 +19,7 @@ const ProdItemCom: React.FC<Props> = ({ title, id, size, img, price, history }) 
       }
       <div>
         <Typography.Text type='secondary'>
-          {title.slice(0, 15)}
+          {title.slice(0, 10)}
         </Typography.Text>
         <Typography.Text type='danger'>
           ${price}起
