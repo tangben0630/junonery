@@ -1,6 +1,6 @@
 import React from 'react'
 // import styles from './prod.module.css'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import { Typography, Image } from 'antd'
 interface Props extends RouteComponentProps {
   title: string,
@@ -10,24 +10,22 @@ interface Props extends RouteComponentProps {
   id: number | number
 }
 const ProdItemCom: React.FC<Props> = ({ title, id, size, img, price, history }) => {
-  // const history = useHistory()
-  const toDetail = () => {
-    history.push({ pathname: '/detail/' + id })
-  }
-  return <div onClick={() => { toDetail() }}>
-    {
-      size === 'large' ?
-        <Image src={img} height={285} width={490} /> :
-        <Image src={img} height={120} width={240} />
-    }
-    <div>
-      <Typography.Text type='secondary'>
-        {title.slice(0, 15)}
+  return <div>
+    <Link to={`/detail/${id}`}>
+      {
+        size === 'large' ?
+          <Image src={img} height={285} width={490} /> :
+          <Image src={img} height={120} width={240} />
+      }
+      <div>
+        <Typography.Text type='secondary'>
+          {title.slice(0, 15)}
+        </Typography.Text>
+        <Typography.Text type='danger'>
+          ${price}起
       </Typography.Text>
-      <Typography.Text type='danger'>
-        ${price}起
-      </Typography.Text>
-    </div>
+      </div>
+    </Link>
   </div>
 
 }
