@@ -1,0 +1,4 @@
+1，react通信：
+  props
+  context
+  redux

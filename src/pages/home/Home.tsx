@@ -15,10 +15,14 @@ export class Home extends React.Component {
       a: 8
     }
   }
+  nihao() {
+    console.log('来自header的change');
+
+  }
   render() {
     return (
       <div className={styles.app}>
-        <Header />
+        <Header change={this.nihao} />
         <div className={styles['page-content']}>
           <Row>
             <Col span={6}>
