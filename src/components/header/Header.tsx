@@ -7,6 +7,8 @@ interface Props {
   change: Function
 }
 export const Header: React.FC<Props> = (props) => {
+
+
   const history = useHistory()
   // const location = useLocation()
   const toLogin = () => {
@@ -30,7 +32,7 @@ export const Header: React.FC<Props> = (props) => {
             语言
           </Dropdown.Button>
           <Button.Group className={styles['btn-group']}>
-            <Button onClick={() => { props.change() }}>登录</Button>
+            <Button onClick={() => { toLogin() }}>登录</Button>
             <Button onClick={() => { toReg() }}>注册</Button>
           </Button.Group>
         </div>
