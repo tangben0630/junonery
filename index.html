@@ -8,44 +8,110 @@
 <body>
   <script>
     const aaa = [ -3, 7, -4, 2,-2,0,5,1,-1]
-    function find(nums) {
-      nums.sort()
-      const len = nums.length
-      const res= []
-      for (let i = 0; i < len - 2; i++) {
-        const n1 = nums[i]
-        if (n1 > 0) {
-          break
-        }
-        if (i-1 >= 0 && n1 === nums[i - 1]) {
-          continue
-        }
-        let left = i + 1
-        let right = nums.length - 1
+    // function find(nums) {
+    //   nums.sort()
+    //   const len = nums.length
+    //   const res= []
+    //   for (let i = 0; i < len - 2; i++) {
+    //     const n1 = nums[i]
+    //     if (n1 > 0) {
+    //       break
+    //     }
+    //     if (i-1 >= 0 && n1 === nums[i - 1]) {
+    //       continue
+    //     }
+    //     let left = i + 1
+    //     let right = nums.length - 1
 
-        while (left < right) {
-          const n2 = nums[left], n3 = nums[right]
+    //     while (left < right) {
+    //       const n2 = nums[left], n3 = nums[right]
+    //       const s = n1 + n2 + n3
+    //       if (s > 0) {
+    //         right--
+    //       } else if (s < 0) {
+    //         left++
+    //       } else {
+    //         res.push([n1 , n2 , n3])
+    //         while (left < right && nums[right] == n3) {
+    //           right--
+    //         }
+    //         while (left < right && nums[left] == n2) {
+    //           left++
+    //         }
+    //       }
+    //     }
+    //   }
+    //   return res
+    // }
+
+    function find(nums){
+      const len = nums.length
+      const res = []
+      nums.sort((a,b)=>a-b)
+
+      for(let i=0;i<len-2;i++){
+        const n1 = nums[i]
+        //设置左右指针
+        let left = i+1
+        let right = len-1
+        while(left < right){
+          const n2 = nums[left]
+          const n3 = nums[right]
           const s = n1 + n2 + n3
-          if (s > 0) {
+          if(s == 0){
+            res.push([n1,n2,n3])
+            while(left < right && n2 == nums[left]){
+              left ++
+            }
+            while(left < right && n3 == nums[right]){
+              right --
+            }
+          }else if(s>0){
             right--
-          } else if (s < 0) {
-            left++
-          } else {
-            res.push([n1 , n2 , n3])
-            while (left < right && nums[right] == n3) {
-              right--
-            }
-            while (left < right && nums[left] == n2) {
-              left++
-            }
+          }else {
+            left ++
           }
         }
       }
       return res
     }
-    const nnn = find(aaa)
-    console.log(nnn, 'nnn');
 
+
+    // const nnn = find(aaa)
+    // console.log(nnn, 'nnn');
+    //动态规划
+    
+    function floor(n){
+      if(n < 3) return n
+      let one = 1
+      let two = 2
+      let three = 4
+      let cur = 4
+    for(let i = 4; i <= n; i++){
+      cur = (one + two + three) % 1000000007
+      one = two
+      two = three
+      three = cur
+    }
+    return cur
+    }
+    const nihao = [1,-2,0,5,-1]
+    var maxSubArray = function(nums) {
+    let ans = nums[0];
+        let sum = 0;
+        for(let num of nums) {
+            if(sum + num > num ){
+                sum = sum + num;
+            } else {
+                sum = num;
+            }
+            ans = Math.max(ans, sum);
+        };
+        console.log(ans,'ans');
+        return ans;
+    };
+
+    maxSubArray(nihao)
 
   </script>
 </body>
