@@ -278,10 +278,13 @@
       console.log(arr,'arr=== maopao');
     }
     mao([2,5,3,17,8,-1,-5,9,9])
+    mao2([2,5,3,17,8,-1,-5,9,9])
     xuan([2,5,3,17,8,-1,-5,9,9])
+    xuan2([2,5,3,17,8,-1,-5,9,9])
     padding([2,5,3,17,8,-1,-5,9,9])
 
     console.log(kuai([2,5,3,17,8,-1,-5,9,9]),'kuai');
+    console.log(kuai([2,5,3,17,8,-1,-5,9,9]),'kuai2');
     function kuai(arr){
       const len = arr.length
       if(len < 2){
@@ -303,7 +306,7 @@
         const list = arr.slice(i, len)
         const min = Math.min.apply(null, list)
         let minIndex = i
-        for(let k=i;k<len-i;k++){
+        for(let k=i;k<len;k++){
           if(arr[k] == min){
             minIndex = k
           }
@@ -317,14 +320,87 @@
     //归并排序：
     //把长度为n的输入序列分成两个长度为n/2的子序列
     //对这连个子序列分别采用归并排序
+
+
+    //二叉树：子节点只有两个，左右
+    //如果有子节点有环，称为图
+    //1，左子树上面的所有节点的值，都小于他的根节点的值
+    //2，右子树所有节点的值，都大于他的根节点的值
+    //3，
     //
     //
     //
+    var inorderTraversal = function(root) {
+      let list = []
+      let stack = []
+      let node = root
+      while(stack.length || node) { 
+          if(node) {
+              stack.push(node)
+              node = node.left
+              continue
+          }
+          node = stack.pop()
+          list.push(node.val)
+          node = node.right
+      }
+      return list
+    };
+
+
     //
-    //
-    //
-    //
-    //
+    function xuan2(arr){
+      const len = arr.length;
+      for(let i=0;i<len;i++){
+        const list = arr.slice(i, len)
+        const min = Math.min.apply(null, list)
+        let index = i
+        for(let k=i;k<len;k++){
+          if(min === arr[k]){
+            index = k
+          }
+        }
+        arr[index] = arr[i]
+        arr[i] = min
+      }
+      console.log(arr,'xuan2');
+    }
+    function mao2(arr){
+      const len = arr.length;
+      for(let i=0;i<len;i++){
+        for(let k=0;k<len;k++){
+          if(i !== k){
+            if(arr[i] < arr[k]){
+              const val = arr[i]
+              arr[i] = arr[k]
+              arr[k] = val
+            }
+          }
+        }
+      }
+      console.log(arr,'mao2');
+    }
+
+    function kuai2(arr){
+      const len = arr.length
+      if(len < 2){
+        return arr
+      }
+      const midIndex = Math.floor(len/2)
+      const midValue = arr[midIndex]
+      arr.splice(midIndex, 1)
+      let left= []
+      let right= []
+      for(let i=0;i<arr.length;i++){
+        if(arr[i] < midValue){
+          left.push(arr[i])
+        }else {
+          right.push(arr[i])
+        }
+      }
+      return kuai2(left).concat([midValue], kuai2(right))
+    }
+
   </script>
 </body>
 </html>
