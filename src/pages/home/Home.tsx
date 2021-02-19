@@ -22,7 +22,7 @@ export class Home extends React.Component {
   render() {
     return (
       <div className={styles.app}>
-        <Header change={this.nihao} />
+        <Header />
         <div className={styles['page-content']}>
           <Row>
             <Col span={6}>
