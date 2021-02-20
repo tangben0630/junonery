@@ -12,12 +12,12 @@ class HeaderCom extends React.Component<RouteComponentProps> {
     super(props)
     const storeState = store.getState()
     this.state = {
-      nihao: storeState.nihao,
+      nihao: storeState.language,
     }
     store.subscribe(() => {
       const storeState = store.getState()
       this.setState({
-        nihao: storeState.nihao,
+        nihao: storeState.language,
       })
     })
   }
@@ -45,7 +45,7 @@ class HeaderCom extends React.Component<RouteComponentProps> {
         <div className={styles['top-header']}>
           <div className={styles['inner']}
             onClick={() => { this.change() }}>
-            <Typography.Text>{(this.state as any).nihao}89</Typography.Text>
+            <Typography.Text>{(this.state as any).language}89</Typography.Text>
             <Dropdown.Button style={{ marginLeft: 15 }} overlay={
               <Menu>
                 <Menu.Item>中文</Menu.Item>
