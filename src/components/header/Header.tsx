@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './header.module.css'
 import logo from '../../logo.svg'
 import { Layout, Typography, Input, Dropdown, Menu, Button } from 'antd'
 import { useHistory } from 'react-router-dom'
+import { useSelector } from '../../redux/hooks'
+import { useDispatch } from 'react-redux'
 interface Props {
   change: Function
 }
 export const Header: React.FC<Props> = (props) => {
-
-
+  const [la, setLa] = useState<string>()
+  const dispatch = useDispatch()
+  const language = useSelector((state) => {
+    return state.language
+  })
+  
   const history = useHistory()
-  // const location = useLocation()
   const toLogin = () => {
-    history.push({ pathname: '/login', state: { a: 2 } })
+    dispatch({ type: 'aaa', value: 'ss' })
+    setLa(language)
+    // history.push({ pathname: '/login', state: { a: 2 } })
   }
   const toReg = () => {
     history.push({ pathname: '/reg' })
@@ -22,7 +29,7 @@ export const Header: React.FC<Props> = (props) => {
       {/* top-header */}
       <div className={styles['top-header']}>
         <div className={styles['inner']}>
-          <Typography.Text>让旅游更简单</Typography.Text>
+          <Typography.Text>{la}</Typography.Text>
           <Dropdown.Button style={{ marginLeft: 15 }} overlay={
             <Menu>
               <Menu.Item>中文</Menu.Item>

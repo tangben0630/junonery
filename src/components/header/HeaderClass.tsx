@@ -15,7 +15,10 @@ class HeaderCom extends React.Component<RouteComponentProps> {
       nihao: storeState.language,
     }
     store.subscribe(() => {
+
       const storeState = store.getState()
+      console.log('nihui yunxingma ?', storeState);
+
       this.setState({
         nihao: storeState.language,
       })
@@ -30,11 +33,11 @@ class HeaderCom extends React.Component<RouteComponentProps> {
     history.push({ pathname: '/reg', state: { a: 2 } })
   }
   change() {
-    console.log('------');
+    console.log('------点击了');
 
     const action = {
       type: 'aaa',
-      value: '777'
+      value: 'en'
     }
     store.dispatch(action)
   }
@@ -45,7 +48,7 @@ class HeaderCom extends React.Component<RouteComponentProps> {
         <div className={styles['top-header']}>
           <div className={styles['inner']}
             onClick={() => { this.change() }}>
-            <Typography.Text>{(this.state as any).language}89</Typography.Text>
+            <Typography.Text>{(this.state as any).nihao}89</Typography.Text>
             <Dropdown.Button style={{ marginLeft: 15 }} overlay={
               <Menu>
                 <Menu.Item>中文</Menu.Item>
