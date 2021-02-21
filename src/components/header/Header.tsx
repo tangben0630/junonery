@@ -12,12 +12,14 @@ export const Header: React.FC<Props> = (props) => {
   const [la, setLa] = useState<string>()
   const dispatch = useDispatch()
   const language = useSelector((state) => {
-    return state.language
+    return state.language.language
   })
-  
+  console.log(language, 'language=====');
+
   const history = useHistory()
   const toLogin = () => {
     dispatch({ type: 'aaa', value: 'ss' })
+
     setLa(language)
     // history.push({ pathname: '/login', state: { a: 2 } })
   }

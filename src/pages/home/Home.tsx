@@ -6,7 +6,14 @@ import { productList1, productList2, productList3 } from '../../mock/comm'
 import s1 from '../../assets/images/sider_2019_02-04-2.png'
 import s2 from '../../assets/images/sider_2019_02-04-2.png'
 import s3 from '../../assets/images/sider_2019_02-04.png'
+import { connect } from 'react-redux'
+// import rootState from '../../redux/store'
+//http://119.45.187.33:8000/api/blog/list
+// const mapStateToProps = (state:rootState) =>{
+//   return {
 
+//   }
+// }
 
 export class Home extends React.Component {
   constructor(props) {

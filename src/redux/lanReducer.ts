@@ -1,14 +1,18 @@
 
 export interface LanState {
-  language: string,
-  languageList: { name: string, code: string }[]
+  language: {
+    languageList: { name: string, code: string }[]
+    language: string,
+  }
 }
 const defaultState: LanState = {
-  language: 'zh',
-  languageList: [
-    { name: '中文', code: 'zh' },
-    { name: '英文', code: 'en' },
-  ]
+  language: {
+    language: 'zh',
+    languageList: [
+      { name: '中文', code: 'zh' },
+      { name: '英文', code: 'en' },
+    ]
+  }
 }
 
 export const lanReducer = (state = defaultState, action) => {
