@@ -6,7 +6,7 @@ import { productList1, productList2, productList3 } from '../../mock/comm'
 import s1 from '../../assets/images/sider_2019_02-04-2.png'
 import s2 from '../../assets/images/sider_2019_02-04-2.png'
 import s3 from '../../assets/images/sider_2019_02-04.png'
-
+import axios from 'axios'
 
 export class Home extends React.Component {
   constructor(props) {
@@ -14,6 +14,12 @@ export class Home extends React.Component {
     this.state = {
       a: 8
     }
+  }
+  componentDidMount() {
+    axios.get('/api/blog/list').then(res => {
+      console.log(res, 'res');
+
+    })
   }
   nihao() {
     console.log('来自header的change');
