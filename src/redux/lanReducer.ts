@@ -16,6 +16,8 @@ const defaultState: LanState = {
 }
 
 export const lanReducer = (state = defaultState, action) => {
+  //state: reducer是数据处理的过程，state是store中的上一次的数据，旧数据
+  //action: 通过action的指令，对数据进行更改，产生新的数据
   const newState = {
     ...state,
   }
