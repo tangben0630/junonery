@@ -42,12 +42,12 @@ class HeaderCom extends React.Component<RouteComponentProps> {
     store.dispatch(action)
   }
   render() {
-    return <>
+    return <> 
       <div className={styles['app-header']}>
         {/* top-header */}
-        <div className={styles['top-header']}>
+        <div className={styles['top-header']} onClick={() => { this.change() }}>
           <div className={styles['inner']}
-            onClick={() => { this.change() }}>
+          >
             <Typography.Text>{(this.state as any).nihao}89</Typography.Text>
             <Dropdown.Button style={{ marginLeft: 15 }} overlay={
               <Menu>
@@ -58,7 +58,7 @@ class HeaderCom extends React.Component<RouteComponentProps> {
               语言
           </Dropdown.Button>
             <Button.Group className={styles['btn-group']}>
-              <Button onClick={() => { this.toLogin() }}>登录</Button>
+              <Button onClick={() => { this.change() }}>登录</Button>
               <Button onClick={() => { this.toReg() }}>注册</Button>
             </Button.Group>
           </div>
