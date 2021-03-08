@@ -1,7 +1,7 @@
 import React from 'react'
 import Zu from './Zu'
 import Zu2 from './Zu2'
-import Head from './Head'
+import Head from './HeadFn'
 export const List1 = () => {
   return (
     <>

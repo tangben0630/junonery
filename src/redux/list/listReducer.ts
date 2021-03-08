@@ -1,7 +1,7 @@
 
 import { CH, changeType } from './listActions'
 
-interface State {
+export interface State {
   lan: string,
   lanList: { name: string, code: number }[]
 }

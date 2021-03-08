@@ -17,8 +17,8 @@ const mapStateToProps = (state: RootState) => {
 }
 const mapDispachToProps = (dispatch: Dispatch) => {
   return {
-    changeFn: () => {
-      const action: changeType = changeFn('666', 'CH')
+    aaa: () => {
+      const action: changeType = changeFn('222', 'CH')
       dispatch(action)
     }
   }
@@ -27,17 +27,8 @@ const mapDispachToProps = (dispatch: Dispatch) => {
 type PropsType = Props & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispachToProps>
 
 class Head extends React.Component<PropsType> {
-  // change() {
-  //   console.log(this.props, '66666666666666');
-
-  //   console.log(store.getState().ListReducer, '111');
-  //   const action: changeType = changeFn('666', 'CH')
-  //   store.dispatch(action)
-  //   console.log(store.getState().ListReducer, '222');
-
-  // }
   render() {
-    return <div className={styles['he']} onClick={() => { this.props.changeFn() }}>
+    return <div className={styles['he']} onClick={() => { this.props.aaa() }}>
       {this.props.lan}
     </ div>
   }
