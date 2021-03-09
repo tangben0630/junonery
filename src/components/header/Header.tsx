@@ -14,7 +14,6 @@ export const Header: React.FC<Props> = (props) => {
   const language = useSelector((state) => {
     return state.language.language
   })
-  console.log(language, 'language=====');
 
   const history = useHistory()
   const toLogin = () => {
