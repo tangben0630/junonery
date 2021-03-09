@@ -8,6 +8,7 @@ import s3 from '../../assets/images/sider_2019_02-04.png'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { RootState } from '../../redux/store'
+import { startFn, failFn, successFn } from '../../redux/recommondProd/recommondActions'
 import axios from 'axios'
 interface State {
   productList: any,
@@ -24,10 +25,15 @@ const mapStateToProps = (state: RootState) => {
 }
 const mapDispachToProps = (dispatch: Dispatch) => {
   return {
-    aaa: () => {
-      const action: changeType = changeFn('222', 'CH')
-      dispatch(action)
-    }
+    start: () => {
+      dispatch(startFn())
+    },
+    fail: (data) => {
+      dispatch(failFn(data))
+    },
+    success: (data) => {
+      dispatch(successFn(data))
+    },
   }
 }
 class Home extends React.Component<State> {
