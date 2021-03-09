@@ -2,26 +2,35 @@ import React from 'react';
 import styles from './home.module.css'
 import { Header, Footer, Slide, Banner, Prod } from '../../components'
 import { Row, Col, Typography, Spin } from 'antd'
-import { productList1, productList2, productList3 } from '../../mock/comm'
 import s1 from '../../assets/images/sider_2019_02-04-2.png'
 import s2 from '../../assets/images/sider_2019_02-04-2.png'
 import s3 from '../../assets/images/sider_2019_02-04.png'
+import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
+import { RootState } from '../../redux/store'
 import axios from 'axios'
-// import rootState from '../../redux/store'
-//http://119.45.187.33:8000/api/blog/list
-// const mapStateToProps = (state:rootState) =>{
-//   return {
-
-//   }
-// }
-import hehe from '../../mock/list.json'
-console.log(hehe, 'hehehs');
 interface State {
   productList: any,
-  loading: boolean
+  loading: boolean,
+
 }
 
-export class Home extends React.Component<State> {
+const mapStateToProps = (state: RootState) => {
+  return {
+    loading: state.recommondProd.loading,
+    error: state.recommondProd.error,
+    productList: state.recommondProd.productList
+  }
+}
+const mapDispachToProps = (dispatch: Dispatch) => {
+  return {
+    aaa: () => {
+      const action: changeType = changeFn('222', 'CH')
+      dispatch(action)
+    }
+  }
+}
+class Home extends React.Component<State> {
   constructor(props) {
     super(props)
     this.state = {
@@ -93,4 +102,4 @@ export class Home extends React.Component<State> {
 }
 
 
-// export default Home;
+export const HomePage = connect()(Home);

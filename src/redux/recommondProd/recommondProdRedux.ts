@@ -12,7 +12,7 @@ const defaultValue: RecoProdState = {
   error: null
 }
 
-export const RecommondRedux = (state = defaultValue, action) => {
+export const RecommondRedux = (state = defaultValue, action: RecommondActions) => {
   switch (action.type) {
     case START:
       return {

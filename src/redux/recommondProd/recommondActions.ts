@@ -1,6 +1,6 @@
-export const START = 'START'
-export const SUCCESS = 'SUCCESS'
-export const FAIL = 'FAIL'
+export const START = 'START'//请求开始
+export const SUCCESS = 'SUCCESS'//成功
+export const FAIL = 'FAIL'//失败
 
 interface Start {
   type: typeof START
