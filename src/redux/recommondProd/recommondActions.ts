@@ -6,6 +6,7 @@ interface Start {
   type: typeof START
 }
 
+
 interface Success {
   type: typeof SUCCESS,
   payload: any

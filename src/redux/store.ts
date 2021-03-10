@@ -5,11 +5,12 @@ import { otherFn } from './otheRedux/index'
 import { ListReducer } from './list/listReducer'
 import thunk from 'redux-thunk'
 import { actionLog } from './middleware/actionLog'
+import { TestReducer } from './test/testReducer'
 
 const rootReducer = combineReducers({
   language: lanReducer,
   recommondProd: RecommondRedux,
-  otherFn, ListReducer
+  otherFn, ListReducer, TestReducer
 })
 const store = createStore(rootReducer, applyMiddleware(thunk, actionLog))
 

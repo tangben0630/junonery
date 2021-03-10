@@ -10,11 +10,7 @@ import { Dispatch } from 'redux'
 import { RootState } from '../../redux/store'
 import { startFn, failFn, successFn } from '../../redux/recommondProd/recommondActions'
 import axios from 'axios'
-interface State {
-  productList: any,
-  loading: boolean,
 
-}
 
 const mapStateToProps = (state: RootState) => {
   return {
@@ -36,29 +32,16 @@ const mapDispachToProps = (dispatch: Dispatch) => {
     },
   }
 }
-class Home extends React.Component<State> {
-  constructor(props) {
-    super(props)
-    this.state = {
-      a: 8,
-      productList: [],
-      loading: true
-    }
-  }
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispachToProps>
+class Home extends React.Component<Props> {
   componentDidMount() {
-    this.setState({
-      loading: true
-    })
+    this.props.start()
     axios.get('http://123.56.149.216:8080/api/productCollections', {
       headers: {
         'x-icode': '3D50B8E3B1DFC232'
       }
     }).then(res => {
-      console.log(res, 'res ------');
-      this.setState({
-        productList: res.data,
-        loading: false
-      })
+      this.props.success(res.data)
     })
   }
   nihao() {
@@ -66,8 +49,8 @@ class Home extends React.Component<State> {
 
   }
   render() {
-    const productList = (this.state as any).productList
-    if ((this.state as any).loading) {
+    const { productList, loading } = this.props
+    if (loading) {
       return <Spin></Spin>
     }
     return (
@@ -108,4 +91,4 @@ class Home extends React.Component<State> {
 }
 
 
-export const HomePage = connect()(Home);
+export const HomePage = connect(mapStateToProps, mapDispachToProps)(Home);
