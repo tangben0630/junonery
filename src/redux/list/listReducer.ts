@@ -19,7 +19,6 @@ const defaultState: State = {
 
 
 export const ListReducer = (state = defaultState, action: changeType) => {
-  console.log(action);
   if (action.type === CH) {
     return {
       ...state,
